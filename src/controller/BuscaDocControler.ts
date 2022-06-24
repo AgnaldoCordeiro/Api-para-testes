@@ -20,11 +20,13 @@ export class BuscaDocControler{
       const name = "Deu Certo"
       const cpf = "44907141815"  
     
-    const doc = JSON.parse(req.body.doc);
-    const resposta =  JSON.parse(`${name}: https://stisolucao.ddns.com.br:8090/?doc=${doc}`)
+    const doc = req.body.doc;
+   
   
-    if (cpf === doc) {     
-      return res.json(resposta)
+    if (cpf === doc) {   
+      const mensagem = `${name}: https://stisolucao.ddns.com.br:8090/?doc=${doc}`
+      const obj = JSON.stringify(mensagem)
+      return res.json(obj)
     
     }
     return res.json({message: "Invalid CPF ou CNPJ"})
