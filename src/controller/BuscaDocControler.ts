@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-
+/* 
 const getCircularReplacer = () => {
   const seen = new WeakSet();
   return (key: any, value: object) => {
@@ -13,20 +13,17 @@ const getCircularReplacer = () => {
     return value;
   };
 };
- 
+  */
 export class BuscaDocControler{
   handle(req: Request, res: Response) {
    
       const name = "Deu Certo"
-      const cpf = "44907141815"
-   
-
+      const cpf = "44907141815"  
     
-    const doc = req.body.doc;
+    const doc = JSON.parse(req.body.doc);
     
-    if (cpf === doc) {
-      const result = JSON.stringify(doc, getCircularReplacer());
-      return res.json(`${name}: https://stisolucao.ddns.com.br:8090/?doc=${result}`
+    if (cpf === doc) {     
+      return res.json(`${name}: https://stisolucao.ddns.com.br:8090/?doc=${doc}`
          
       )
     
