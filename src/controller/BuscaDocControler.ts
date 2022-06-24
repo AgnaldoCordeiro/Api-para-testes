@@ -23,15 +23,15 @@ export class BuscaDocControler{
 
     
     const doc = req.body.doc;
+    
     if (cpf === doc) {
-      JSON.stringify(doc, getCircularReplacer());
-      console.log(doc)
-      return res.json(`${name}: https://stisolucao.ddns.com.br:8090/?doc=${cpf}`
+      const result = JSON.stringify(doc, getCircularReplacer());
+      return res.json(`${name}: https://stisolucao.ddns.com.br:8090/?doc=${result}`
          
       )
     
     }
-    return res.json({mensagem: res.status(403).send("erro na api")})
+    return res.json("CPF ou CNPJ Inválidos! favor conferir")
     
   } 
 }
